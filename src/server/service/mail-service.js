@@ -1,7 +1,6 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 class MailService {
-
     constructor() {
         this.transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
@@ -10,7 +9,7 @@ class MailService {
             auth: {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASSWORD,
-            }
+            },
         });
     }
 
@@ -19,14 +18,13 @@ class MailService {
             from: process.env.SMTP_USER,
             to,
             subject: `Account activation ${process.env.API_URL}`,
-            text: '',
-            html:
-            `
-                <div>
-                    <h1>Activation link:</h1>
-                    <a href="${link}">${link}</a>
-                </div>
-            `
+            text: "",
+            html: `
+                    <div>
+                        <h1>Activation link:</h1>
+                        <a href="${link}">${link}</a>
+                    </div>
+                `,
         });
     }
 }
